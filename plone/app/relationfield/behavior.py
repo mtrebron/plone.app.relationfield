@@ -8,7 +8,7 @@ from plone.supermodel.directives import fieldset
 from z3c.relationfield.schema import RelationChoice
 from z3c.relationfield.schema import RelationList
 from zope.interface import provider
-from zope import schema
+
 
 @provider(IFormFieldProvider)
 class IRelatedItems(model.Schema):
@@ -23,11 +23,6 @@ class IRelatedItems(model.Schema):
         ),
         required=False,
     )
-    relation_caption = schema.TextLine(
-        title=_(u'label_relation_caption', default=u'Provide an optional caption for the Related Items'),
-        required=False,
-        default=u''
-    )
     form.widget(
         'relatedItems',
         RelatedItemsFieldWidget,
@@ -38,5 +33,5 @@ class IRelatedItems(model.Schema):
     )
 
     fieldset(
-        'categorization', label=_(u'Categorization'), fields=['relatedItems', 'relation_caption']
+        'categorization', label=_(u'Categorization'), fields=['relatedItems']
     )
